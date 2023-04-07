@@ -1,4 +1,5 @@
-import {FaFacebookF, FaInstagram, FaTwitter} from 'react-icons/fa';
+import Link from 'next/link';
+
 
 function HeaderMenuBar() {
 
@@ -8,24 +9,24 @@ function HeaderMenuBar() {
                 <div className="container">
                     <div className="header_main_content">
                         <div className="header_logo">
-                            <span>Logo</span>
+                            <span><Link href="/">Logo</Link></span>
                         </div>
                         <div className="header_menu">
                             <ul className="menu_list">
                                 <li className="menu_item">
-                                    <a href="" className="item_link">Home</a>
+                                    <Link href="/" className="item_link">Home</Link>
                                 </li>
                                 <li className="menu_item">
-                                    <a href="" className="item_link">About Us</a>
+                                    <Link href="/about" className="item_link">About Us</Link>
                                 </li>
                                 <li className="menu_item">
-                                    <a href="" className="item_link">Products</a>
+                                    <Link href="/products" className="item_link">Products</Link>
                                 </li>
                                 <li className="menu_item">
-                                    <a href="" className="item_link">Blogs</a>
+                                    <Link href="/blogs" className="item_link">Blogs</Link>
                                 </li>
                                 <li className="menu_item">
-                                    <a href="" className="item_link">Contact Us</a>
+                                    <Link href="/contact" className="item_link">Contact Us</Link>
                                 </li>
                             </ul>
                         </div>

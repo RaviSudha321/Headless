@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import Header from '@/Components/Header/Header';
 import Footer from '@/Components/Footer/Footer';
+import Home from '@/Components/Home/Home';
 
-
-export default function Home() {
+export default function Index() {
   return (
     <>
       <Head>
@@ -14,8 +14,10 @@ export default function Home() {
       </Head>
       <main id='main_content'>
         <Header />
+          <Home />
         <Footer />
       </main>
     </>
   )
 }
+ 

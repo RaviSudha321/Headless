@@ -6,7 +6,7 @@ function HeaderTopBar(){
         <>
             <div className='header_top_bar'>
                 <div className="container">
-                    <div className="header_topbatrcontent">
+                    <div className="header_topbar_content">
                         <div className='header_contact_links'>
                             <span>
                                 <a href=""><FaEnvelope />example@gmail.com</a>
