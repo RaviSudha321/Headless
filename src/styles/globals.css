@@ -1,0 +1,19 @@
+:root {
+    --primary-color: #A7727D;
+    --secondary-color: #EDDBC7;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: min(100%, 1280px);
+    margin-inline: auto;
+    padding-inline: 20px;
+}
+.header_top_bar {
+    background-color: var(--primary-color);
+    padding: 15px 0;
+}
