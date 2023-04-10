@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 function ImageWithText({title, subTitle, description, buttonText, buttonLink, imageUrl, imagePosition}){
 
     return(
@@ -17,7 +19,7 @@ function ImageWithText({title, subTitle, description, buttonText, buttonLink, im
                                 <h3 className="text_sub_title">{subTitle}</h3>
                                 <p className="text_desc">{description}</p>
                                 {
-                                    buttonText && <div className="global_btn"><a href={buttonLink}>{buttonText}</a></div>
+                                    buttonLink && <div className="global_btn"><Link href={buttonLink}>{buttonText}</Link></div>
                                 }
                             </div>
                         </div>

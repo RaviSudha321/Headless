@@ -1,6 +1,6 @@
 import Hero from "./Hero.js";
 import ImageWithText from "../ImageWithText/ImageWithText.js";
-
+import Cta from "../CallToAction.js/CallToAction.js";
 
 function Home(){
     return(
@@ -11,10 +11,11 @@ function Home(){
                 subTitle="Is Not Just Service"
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."
                 buttonText="Learn More"
-                button="#"
+                buttonLink="/about"
                 imageUrl="/images/hero.jpeg"
                 imagePosition="right"
             />
+            <Cta />
         </>
     )
 }
