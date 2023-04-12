@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import Header from '@/Components/Header/Header';  
 import Footer from '@/Components/Footer/Footer';
 import InnerBanner from '@/Components/InnerBanner/InnerBanner';
@@ -30,7 +29,7 @@ function Blogs({posts}){
                         posts.map((data, index) => {
                             return(
                                 <>
-                                    <div className='post_item'>
+                                    <div className='post_item' key={index}>
                                         <div className='post_img'>
                                             <img src={data._embedded['wp:featuredmedia'][0].source_url} alt={data._embedded['wp:featuredmedia'][0].title.rendered} />
                                         </div>
@@ -40,11 +39,8 @@ function Blogs({posts}){
                                             </h3>
                                             <div className='post_meta'>
                                                 <span className='author'><Link href={data._embedded.author[0].link}>{data._embedded.author[0].name}</Link></span>
-                                                <span className='date'>{data.date}</span>
+                                                <span className='date'>{new Date(data.date).toLocaleDateString('en-GB')}</span>
                                             </div>
-                                            {/* <div className='post_cats'>
-                                                {data.categories}
-                                            </div> */}
                                             <div className='post_excert' dangerouslySetInnerHTML={{__html: data.excerpt.rendered}}></div>
                                             <div className='post_btn'>
                                                 <Link href={`/blogs/${data.id}`}>Read More</Link>

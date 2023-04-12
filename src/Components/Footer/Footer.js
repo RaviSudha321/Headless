@@ -40,10 +40,10 @@ function Footer() {
                         <div className="footer_contact">
                             <h3 className='footer_title'>Contact Us</h3>
                             <span>
-                                <Link href="javascript:void(0)"><FaEnvelope />example@gmail.com</Link>
+                                <Link href="#"><FaEnvelope />example@gmail.com</Link>
                             </span>
                             <span>
-                                <Link href="javascript:void(0)"><FaPhoneAlt />+91 123-456-7890</Link>
+                                <Link href="#"><FaPhoneAlt />+91 123-456-7890</Link>
                             </span>
                         </div>
                     </div>
