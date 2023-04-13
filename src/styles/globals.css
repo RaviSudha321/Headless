@@ -571,3 +571,6 @@ p:not(:last-child) {
     font-size: 14px;
     line-height: 1.6;
 }
+.archive_posts_sec {
+    padding: 70px 0;
+}

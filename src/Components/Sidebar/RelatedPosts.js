@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-function RecentPosts({currentCategory}){
+function RelatedPosts({currentCategory, currentPostId}){
 
     const [recentPosts, setRecentPosts] = useState();
+    console.log(currentPostId)
 
     useEffect( () => {
 
-        fetch(`https://610weblab.in/headless/wp-json/wp/v2/posts?_embed&categories=${currentCategory}&per_page=5`)
+        fetch(`https://610weblab.in/headless/wp-json/wp/v2/posts?_embed&exclude[0]=${currentPostId}&categories=${currentCategory}&per_page=5`)
         .then( res => res.json())
         .then( data => setRecentPosts(data))
 
@@ -18,7 +19,7 @@ function RecentPosts({currentCategory}){
 
         <>
             <div className="recent_posts">
-                {console.log(recentPosts)}
+                {/* {console.log(recentPosts)} */}
                 {recentPosts && recentPosts.map((item, index) => {
                     return(
                         <>
@@ -42,4 +43,4 @@ function RecentPosts({currentCategory}){
 
 }
 
-export default RecentPosts;
+export default RelatedPosts;

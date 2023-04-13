@@ -2,10 +2,11 @@ import Header from '@/Components/Header/Header';
 import Footer from '@/Components/Footer/Footer';
 import InnerBanner from '@/Components/InnerBanner/InnerBanner';
 import Link from 'next/link';
+import Date from '@/Components/Date';
 
 
 export async function getStaticProps(){
-    const response = await fetch('https://610weblab.in/headless/wp-json/wp/v2/posts?_embed');
+    const response = await fetch('https://610weblab.in/headless/wp-json/wp/v2/posts?_embed&page=1');
     const data = await response.json();
 
     return {
@@ -16,7 +17,7 @@ export async function getStaticProps(){
 }
 
 function Blogs({posts}){
-    //console.log(posts);
+    console.log(posts);
 
     return(
         <>
@@ -39,7 +40,7 @@ function Blogs({posts}){
                                             </h3>
                                             <div className='post_meta'>
                                                 <span className='author'><Link href={data._embedded.author[0].link}>{data._embedded.author[0].name}</Link></span>
-                                                <span className='date'>{new Date(data.date).toLocaleDateString('en-GB')}</span>
+                                                <span className='date'><Date postDate={data.date} /></span>
                                             </div>
                                             <div className='post_excert' dangerouslySetInnerHTML={{__html: data.excerpt.rendered}}></div>
                                             <div className='post_btn'>

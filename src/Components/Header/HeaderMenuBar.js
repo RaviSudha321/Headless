@@ -20,9 +20,6 @@ function HeaderMenuBar() {
                                     <Link href="/about" className="item_link">About Us</Link>
                                 </li>
                                 <li className="menu_item">
-                                    <Link href="/products" className="item_link">Products</Link>
-                                </li>
-                                <li className="menu_item">
                                     <Link href="/blogs" className="item_link">Blogs</Link>
                                 </li>
                                 <li className="menu_item">

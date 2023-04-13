@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import RecentPosts from "./RecentPosts";
+import RelatedPosts from "./RelatedPosts";
 
 
-function Sidebar({currentPostCategory}){
+function Sidebar({currentPostCategory, currentPostId}){
     
     const [categories, setCategories] = useState();
     const [tags, setTags] = useState();
@@ -26,14 +26,14 @@ function Sidebar({currentPostCategory}){
             <div className="sidebar_content">
                 <div className="sidebar_item">
                     <h3 className="sidebar_title">Related Posts</h3>
-                    <RecentPosts currentCategory={currentPostCategory} />
+                    <RelatedPosts currentCategory={currentPostCategory} currentPostId={currentPostId} />
                 </div>
                 <div className="sidebar_item">
                     <h3 className="sidebar_title">Blog Categories</h3>
                     <div className="categories_list">
                         {categories && categories.map((item, index) => {
                             return(
-                                <span className="category" key={index}><Link href={`category/${item.slug}`}>{item.name}</Link></span>
+                                <span className="category" key={index}><Link href={`category/${item.id}`}>{item.name}</Link></span>
                             )
                         })}
                     </div>
