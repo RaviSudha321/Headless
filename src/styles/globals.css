@@ -574,3 +574,9 @@ p:not(:last-child) {
 .archive_posts_sec {
     padding: 70px 0;
 }
+.sec_padding {
+    padding: 70px 0;
+}
+.not_found_content {
+    text-align: center;
+}

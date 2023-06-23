@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
 import Link from "next/link";
+import { categoryPosts } from "../../../lib/posts";
 
 function RelatedPosts({currentCategory, currentPostId}){
 
@@ -19,7 +19,7 @@ function RelatedPosts({currentCategory, currentPostId}){
 
         <>
             <div className="recent_posts">
-                {/* {console.log(recentPosts)} */}
+                {console.log(recentPosts)}
                 {recentPosts && recentPosts.map((item, index) => {
                     return(
                         <>
