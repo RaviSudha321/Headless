@@ -584,3 +584,7 @@ p:not(:last-child) {
     text-align: center;
     margin-top: 60px;
 }
+.no_posts_text {
+    margin-top: 50px;
+    text-align: center;
+}

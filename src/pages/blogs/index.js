@@ -6,17 +6,6 @@ import Date from '@/Components/Date';
 import { getAllPosts } from '../../../lib/posts';
 import { useState } from 'react';
 
-// export async function getStaticProps(){
-//     const response = await fetch('https://610weblab.in/headless/wp-json/wp/v2/posts?_embed&page=1');
-//     const data = await response.json();
-
-//     return {
-//         props: {
-//             posts: data,
-//         },
-//     }
-// }
-
 export async function getStaticProps(){
     const response = await getAllPosts();
 
@@ -112,6 +101,19 @@ function Blogs({posts}){
             </div>
         </section>
         {
+
+            // export async function getStaticProps(){
+            //     const response = await fetch('https://610weblab.in/headless/wp-json/wp/v2/posts?_embed&page=1');
+            //     const data = await response.json();
+
+            //     return {
+            //         props: {
+            //             posts: data,
+            //         },
+            //     }
+            // }
+
+
             // posts.nodes.map((data, index) => {
             //     return(
             //         <>

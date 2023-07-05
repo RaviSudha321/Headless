@@ -1,5 +1,5 @@
 import Link from "next/link";
-import RelatedPosts from "../Sidebar/RelatedPosts";
+// import RelatedPosts from "../Sidebar/RelatedPosts";
 
 
 function BlogSidebar({categories, tags}){
@@ -27,11 +27,6 @@ function BlogSidebar({categories, tags}){
                                 )
                             })
                         }
-                        {/* {categories && categories.map((item, index) => {
-                            return(
-                                <span className="category" key={index}><Link href={`category/${item.id}`}>{item.name}</Link></span>
-                            )
-                        })} */}
                     </div>
                 </div>
                 <div className="sidebar_item">
@@ -42,13 +37,21 @@ function BlogSidebar({categories, tags}){
                                 return(
                                     <>
                                         { 
-                                           item.name ? <span className="category" key={item.id}><Link href={`category/${item.slug}`}>{item.name}</Link></span> : null
+                                           item.name ? <span className="category" key={item.id}><Link href={`tag/${item.slug}`}>{item.name}</Link></span> : null
                                         }
                                         
                                     </>
                                 )
                             })
                         }
+
+
+                        {/* {categories && categories.map((item, index) => {
+                            return(
+                                <span className="category" key={index}><Link href={`category/${item.id}`}>{item.name}</Link></span>
+                            )
+                        })} */}
+
                         {/* {tags && tags.map((item, index) => {
                             return(
                                 <span className="category" key={index}><Link href={`tag/${item.slug}`}>{item.name}</Link></span>
