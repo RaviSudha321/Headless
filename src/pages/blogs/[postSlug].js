@@ -5,7 +5,7 @@ import Link from "next/link";
 import BlogSidebar from "@/Components/BlogSidebar/BlogSidebar";
 import Date from "@/Components/Date";
 import { getSinglePost, getPostSlugs, getPostCategories, getPostTags } from "../../../lib/posts";
-
+import { optionData } from "../../../lib/page";
 
 
 export async function getStaticProps({params}){
@@ -13,12 +13,14 @@ export async function getStaticProps({params}){
     const singlePostData = await getSinglePost(params.postSlug);
     const categories = await getPostCategories();
     const tags = await getPostTags();
+    const optionContent = await optionData();
 
     return {
         props: {
             postData: singlePostData,
             categories,
-            tags
+            tags,
+            optionContent
         }
     }
 }
@@ -41,11 +43,19 @@ export async function getStaticPaths(){
 }
 
 
-export default function SinglePost({postData, categories, tags}){
+export default function SinglePost({postData, categories, tags, optionContent}){
 
     return(
         <>
-            <Header />
+            <Header
+                logo={optionContent.headerLogo.sourceUrl}
+                logoAlt={optionContent.headerLogo.altText}
+                email={optionContent.emailAddress}
+                phone={optionContent.phoneNumber}
+                facebookLink={optionContent.facebookLink}
+                instagramLink={optionContent.instagramLink}
+                twitterLink={optionContent.twitterLink}
+            />
             <InnerBanner title={postData.title} />
             <section className="single_post">
                 <div className="container">
@@ -86,7 +96,14 @@ export default function SinglePost({postData, categories, tags}){
                     </div>
                 </div>
             </section>
-            <Footer />
+            <Footer
+                logo={optionContent.footerLogo.sourceUrl}
+                logoAlt={optionContent.footerLogo.altText}
+                description={optionContent.footerDescription}
+                email={optionContent.emailAddress}
+                phone={optionContent.phoneNumber}
+                copyright={optionContent.copyrightText}
+            />
         </>
     );
 

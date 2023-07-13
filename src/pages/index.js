@@ -1,9 +1,26 @@
 import Head from 'next/head';
 import Header from '@/Components/Header/Header';
 import Footer from '@/Components/Footer/Footer';
-import Home from '@/Components/Home/Home';
+import Hero from '@/Components/Home/Hero';
+import ImageWithText from '@/Components/ImageWithText/ImageWithText';
+import Newsletter from '@/Components/Newsletter/Newsletter';
+import {homeData, optionData} from '../../lib/page';
 
-export default function Index() {
+
+
+export async function getStaticProps(){
+    const homeContent = await homeData();
+    const optionContent = await optionData();
+
+    return {
+      props: {
+        homeContent,
+        optionContent
+      }
+    }
+}
+
+export default function Index({homeContent, optionContent}) {
 
   return (
     <>
@@ -14,9 +31,40 @@ export default function Index() {
         <link rel="icon" href="/favicon-32x32.png" />
       </Head>
       <main id='main_content'>
-        <Header />
-          <Home />
-        <Footer />
+        <Header
+          logo={optionContent.headerLogo.sourceUrl}
+          logoAlt={optionContent.headerLogo.altText}
+          email={optionContent.emailAddress}
+          phone={optionContent.phoneNumber}
+          facebookLink={optionContent.facebookLink}
+          instagramLink={optionContent.instagramLink}
+          twitterLink={optionContent.twitterLink}
+        />
+        <Hero 
+          bannerImage={homeContent.bannerImage.sourceUrl}
+          bannerTitle={homeContent.bannerTitle} 
+          bannerSubTitle={homeContent.bannerSubTitle}
+          bannerDescription={homeContent.bannerDescription} 
+          bannerButtonText={homeContent.bannerButtonText}
+        />
+        <ImageWithText
+              title={homeContent.aboutTitle}
+              subTitle={homeContent.aboutSubTitle}
+              description={homeContent.aboutDescription}
+              buttonText={homeContent.aboutButtonText}
+              buttonLink="/about"
+              imageUrl={homeContent.aboutImage.sourceUrl}
+              imagePosition="left"
+        />
+        <Newsletter title={optionContent.newsletterTitle} description={optionContent.newsletterDescription} />
+        <Footer
+          logo={optionContent.footerLogo.sourceUrl}
+          logoAlt={optionContent.footerLogo.altText}
+          description={optionContent.footerDescription}
+          email={optionContent.emailAddress}
+          phone={optionContent.phoneNumber}
+          copyright={optionContent.copyrightText}
+        />
       </main>
     </>
   )

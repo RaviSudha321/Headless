@@ -4,6 +4,7 @@ import InnerBanner from "@/Components/InnerBanner/InnerBanner";
 import Link from "next/link";
 import { getTagPosts, getTagSlugs, getTagDetail } from "../../../../lib/posts";
 import { useState } from "react";
+import { optionData } from "../../../../lib/page";
 
 
 export async function getStaticPaths(){
@@ -17,7 +18,7 @@ export async function getStaticPaths(){
                 }
             }
         )),
-        fallback: true,
+        fallback: false,
     }
 }
 
@@ -25,16 +26,18 @@ export async function getStaticPaths(){
 export async function getStaticProps({params}){
     const tagPosts = await getTagPosts(params.postTag);
     const tagDetail = await getTagDetail(params.postTag);
+    const optionContent = await optionData();
 
     return {
         props: {
             tagPosts: tagPosts,
-            tagDetail
+            tagDetail,
+            optionContent
         }
     }
 }
 
-function PostTags({tagPosts, tagDetail}){
+function PostTags({tagPosts, tagDetail, optionContent}){
 
     const [posts, setPosts] = useState(tagPosts);
     const [loadButtonText, setLoadButtonText] = useState('Load More');
@@ -80,7 +83,15 @@ function PostTags({tagPosts, tagDetail}){
     
     return (
         <>
-            <Header />
+            <Header
+                logo={optionContent.headerLogo.sourceUrl}
+                logoAlt={optionContent.headerLogo.altText}
+                email={optionContent.emailAddress}
+                phone={optionContent.phoneNumber}
+                facebookLink={optionContent.facebookLink}
+                instagramLink={optionContent.instagramLink}
+                twitterLink={optionContent.twitterLink}
+            />
             <InnerBanner title={`Tag - ${tagDetail.name}`} />
             <section className="archive_posts_sec">
                 <div className="container">
@@ -111,9 +122,6 @@ function PostTags({tagPosts, tagDetail}){
                         }
                     </div>
                     {
-                        console.log(nextPage)
-                    }
-                    {
                         nextPage 
                         ? <div className='global_btn load_more_btn'><a href="#" onClick={handleLoadMore} className={buttonDisbaled ? 'disabled' : null}>{loadButtonText}</a></div> 
                         : <p className="no_posts_text">No More Posts Available</p>
@@ -121,7 +129,14 @@ function PostTags({tagPosts, tagDetail}){
                     
                 </div>
             </section>
-            <Footer />
+            <Footer
+                logo={optionContent.footerLogo.sourceUrl}
+                logoAlt={optionContent.footerLogo.altText}
+                description={optionContent.footerDescription}
+                email={optionContent.emailAddress}
+                phone={optionContent.phoneNumber}
+                copyright={optionContent.copyrightText}
+            />
         </>
     )
 

@@ -1,6 +1,6 @@
 import Hero from "./Hero.js";
 import ImageWithText from "../ImageWithText/ImageWithText.js";
-import Cta from "../CallToAction.js/CallToAction.js";
+import Cta from "../Newsletter/Newsletter.js";
 
 function Home(){
     return(

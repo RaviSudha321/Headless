@@ -91,6 +91,9 @@ body {
 .header_menu .menu_list a:hover {
     color: var(--primary-color);
 }
+.header_logo img {
+    width: 120px;
+}
 #footer {
     padding: 70px 0;
     background-color: var(--primary-color);
@@ -99,6 +102,9 @@ body {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+}
+.footer_logo img {
+    width: 150px;
 }
 .footer_top > div {
     width: 33.33%;
@@ -160,6 +166,14 @@ body {
     text-align: center;
     color: #fff;
 }
+.not_found_title {
+    font-size: 70px;
+}
+.not_found_content .global_btn {
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
+}
 .inner_banner {
     background-position: center;
     background-size: cover;
@@ -213,7 +227,7 @@ body {
     color: #fff;
     font-size: 30px;
     line-height: 1.3;
-    margin: 15px;
+    margin: 15px 0;
 }
 .hero_desc {
     color: #fff;

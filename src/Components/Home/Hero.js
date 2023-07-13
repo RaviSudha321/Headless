@@ -1,42 +1,24 @@
 import Link from "next/link";
 import Head from "next/head";
-import { Inter, Open_Sans } from 'next/font/google';
 
-const inter = Inter({
-  subsets: ['latin']
-})
 
-const open_sans = Open_Sans({
-    subsets: ['latin']
-})
-
-function Hero(){
+function Hero({bannerTitle, bannerSubTitle, bannerDescription, bannerImage, bannerButtonText, bannerButtonLink}){
     return(
         <>
-            <Head>
-                <style>
-                    {
-                        `
-                        .hero_desc {
-                            font-family: ${open_sans.style.fontFamily}
-                        }
-                        `
-                    }
-                </style>
-            </Head>
-            {console.log(open_sans)}
-            <section className={`hero_sec ${inter.className}`} style={{backgroundImage: `url('/images/hero.jpeg')`}}>
+            { bannerTitle ? <section className="hero_sec" style={{backgroundImage: `url('${bannerImage}')`}}>
                 <div className="container">
                     <div className="hero_content">
-                        <h1 className="hero_title">Headless Wordpress</h1>
-                        <h3 className="hero_sub_title">With Next JS</h3>
-                        <p className="hero_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <div className="global_btn">
-                            <Link href="/">Learn More</Link>
-                        </div>
+                        <h1 className="hero_title">{bannerTitle}</h1>
+                        { bannerSubTitle ? <h3 className="hero_sub_title">{bannerSubTitle}</h3> : null }
+                        { bannerDescription ? <p className="hero_desc">{bannerDescription}</p> : null }
+                        { bannerButtonText ? <div className="global_btn">
+                            <Link href={`${bannerButtonLink ? bannerButtonLink : '/'}`}>{bannerButtonText}</Link>
+                        </div> : null
+                        }
                     </div>
                 </div>
-            </section>
+            </section> : null
+            }
         </>
     )
 }

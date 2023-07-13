@@ -5,6 +5,7 @@ import { useState } from "react";
 // import { useRouter } from "next/router";
 import Link from "next/link";
 import { categoryPosts, getCategorySlugs, getCategoryDetail } from "../../../../lib/posts";
+import { optionData } from "../../../../lib/page";
 
 
 export async function getStaticPaths(){
@@ -18,23 +19,25 @@ export async function getStaticPaths(){
                 }
             }
         )),
-        fallback: true
+        fallback: false
     }
 }
 
 export async function getStaticProps({params}){
     const catPosts = await categoryPosts(params.postCategory);
     const catDetail = await getCategoryDetail(params.postCategory);
+    const optionContent = await optionData();
     
     return {
         props: {
             catPosts: catPosts,
-            catDetail: catDetail
+            catDetail: catDetail,
+            optionContent
         }
     }
 }
 
-function PostArchive({catPosts, catDetail}){
+function PostArchive({catPosts, catDetail, optionContent}){
 
     const [posts, setPosts] = useState(catPosts);
     const [loadButtonText, setLoadButtonText] = useState('Load More');
@@ -80,7 +83,15 @@ function PostArchive({catPosts, catDetail}){
     return(
 
         <>
-            <Header />
+            <Header
+                logo={optionContent.headerLogo.sourceUrl}
+                logoAlt={optionContent.headerLogo.altText}
+                email={optionContent.emailAddress}
+                phone={optionContent.phoneNumber}
+                facebookLink={optionContent.facebookLink}
+                instagramLink={optionContent.instagramLink}
+                twitterLink={optionContent.twitterLink}
+            />
             <InnerBanner title={`Category - ${catDetail.name}`} />
             <section className="archive_posts_sec">
                 <div className="container">
@@ -118,7 +129,14 @@ function PostArchive({catPosts, catDetail}){
                     
                 </div>
             </section>
-            <Footer />
+            <Footer
+                logo={optionContent.footerLogo.sourceUrl}
+                logoAlt={optionContent.footerLogo.altText}
+                description={optionContent.footerDescription}
+                email={optionContent.emailAddress}
+                phone={optionContent.phoneNumber}
+                copyright={optionContent.copyrightText}
+            />
 
             {
             // export const getStaticPaths = async () => {

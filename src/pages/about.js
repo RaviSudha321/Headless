@@ -2,22 +2,52 @@ import Header from '../Components/Header/Header';
 import Footer from '@/Components/Footer/Footer';
 import InnerBanner from '@/Components/InnerBanner/InnerBanner';
 import ImageWithText from '@/Components/ImageWithText/ImageWithText';
+import { aboutData, optionData } from '../../lib/page';
 
 
-function About(){
+
+export async function getStaticProps(){
+    const aboutContent = await aboutData();
+    const optionContent = await optionData();
+
+    return {
+        props: {
+            aboutContent,
+            optionContent
+        }
+    }
+}
+
+
+function About({aboutContent, optionContent}){
     return(
         <>
-        <Header />
-        <InnerBanner title="About us" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation u." />
-        <ImageWithText 
-            imageUrl="/images/hero.jpeg"
-            title="Who We Are"
-            subTitle="Is Not Just Service"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."
-            buttonText="Learn More"
-            buttonLink="/"
-        />
-        <Footer />
+            <Header
+                logo={optionContent.headerLogo.sourceUrl}
+                logoAlt={optionContent.headerLogo.altText}
+                email={optionContent.emailAddress}
+                phone={optionContent.phoneNumber}
+                facebookLink={optionContent.facebookLink}
+                instagramLink={optionContent.instagramLink}
+                twitterLink={optionContent.twitterLink}
+            />
+            <InnerBanner title={aboutContent.bannerTitle} description={aboutContent.bannerDescription} />
+            <ImageWithText 
+                imageUrl={aboutContent.aboutImage.sourceUrl}
+                title={aboutContent.aboutTitle}
+                subTitle={aboutContent.aboutSubTitle}
+                description={aboutContent.aboutDescription}
+                buttonText={aboutContent.aboutButtonText}
+                buttonLink="/"
+            />
+            <Footer
+                logo={optionContent.footerLogo.sourceUrl}
+                logoAlt={optionContent.footerLogo.altText}
+                description={optionContent.footerDescription}
+                email={optionContent.emailAddress}
+                phone={optionContent.phoneNumber}
+                copyright={optionContent.copyrightText}
+            />
         </>
     )
 }

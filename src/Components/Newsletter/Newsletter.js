@@ -1,6 +1,6 @@
 import NewsletterForm from "../Forms/NewsletterForm";
 
-function Cta(){
+function Newsletter({title, description}){
 
     return(
 
@@ -8,8 +8,8 @@ function Cta(){
             <section className="cta_sec">
                 <div className="container">
                     <div className="cta_content">
-                        <h2 className="sec_title">Subscribe Our Newsletter</h2>
-                        <p className="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. Lorem ipsum dolor sit amet.</p>
+                        { title && <h2 className="sec_title">{title}</h2> }
+                        { description && <p className="description">{description}</p> }
                         <div className="cta_form">
                             <NewsletterForm />
                         </div>
@@ -22,4 +22,4 @@ function Cta(){
 
 }
 
-export default Cta;
+export default Newsletter;
